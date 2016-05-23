@@ -3,7 +3,36 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="bootstrap" class="com.goit.projects.restaurant.Bootstrap"/>
+    <!--bootstrap-->
+    <bean id="bootstrap" class="com.goit.projects.restaurant.Bootstrap">
+        <property name="employeeDAO" ref="employeeDAO"/>
+    </bean>
+
+    <!--data source implementation-->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="${jdbc.driver.class}"/>
+        <property name="jdbcUrl" value="${jdbc.url}"/>
+        <property name="user" value="${jdbc.user}"/>
+        <property name="password" value="${jdbc.password}"/>
+        <property name="minPoolSize" value="${jdbc.min.connections}"/>
+        <property name="maxPoolSize" value="${jdbc.max.connections}"/>
+        <property name="acquireIncrement" value="${jdbc.acquire.increment}"/>
+    </bean>
+
+    <!--property file support-->
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="classpath:jdbc.properties"/>
+    </bean>
+
+    <!--transaction manager-->
+    <bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager" id="txManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!--employeeDAO-->
+    <bean id="employeeDAO" class="com.goit.projects.restaurant.model.jdbc.JdbcEmployeeDAO">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
 
 
 </beans>

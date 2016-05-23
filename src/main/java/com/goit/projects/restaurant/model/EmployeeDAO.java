@@ -8,7 +8,7 @@ public interface EmployeeDAO {
 
     void removeEmployee(Employee employee);
 
-    Employee loadBySurname(String surname);
+    List<Employee> loadBySurname(String surname);
 
     List<Employee> findAll();
 }
