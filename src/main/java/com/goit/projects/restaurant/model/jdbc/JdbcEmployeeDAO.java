@@ -2,20 +2,10 @@ package com.goit.projects.restaurant.model.jdbc;
 
 import com.goit.projects.restaurant.model.Employee;
 import com.goit.projects.restaurant.model.EmployeeDAO;
-import com.goit.projects.restaurant.model.EmployeeRowMapper;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class JdbcEmployeeDAO implements EmployeeDAO {
