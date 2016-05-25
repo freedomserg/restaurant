@@ -31,6 +31,12 @@
 
     <!--employeeDAO-->
     <bean id="employeeDAO" class="com.goit.projects.restaurant.model.jdbc.JdbcEmployeeDAO">
+        <!--<property name="dataSource" ref="dataSource"/>-->
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    </bean>
+
+    <!--jdbcTemplate -->
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
