@@ -24,8 +24,13 @@
         <property name="location" value="classpath:jdbc.properties"/>
     </bean>
 
-    <!--transaction manager-->
+    <!--Spring-transaction manager-->
     <bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager" id="txManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!--Spring-jdbcTemplate -->
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
@@ -33,11 +38,6 @@
     <bean id="employeeDAO" class="com.goit.projects.restaurant.model.jdbc.JdbcEmployeeDAO">
         <!--<property name="dataSource" ref="dataSource"/>-->
         <property name="jdbcTemplate" ref="jdbcTemplate"/>
-    </bean>
-
-    <!--jdbcTemplate -->
-    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
-        <property name="dataSource" ref="dataSource"/>
     </bean>
 
 
