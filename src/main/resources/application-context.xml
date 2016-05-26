@@ -6,6 +6,7 @@
     <!--bootstrap-->
     <bean id="bootstrap" class="com.goit.projects.restaurant.Bootstrap">
         <property name="employeeController" ref="employeeController"/>
+        <property name="foodCategoryController" ref="categoryController"/>
     </bean>
 
     <!--data source implementation-->
@@ -34,7 +35,7 @@
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
-    <!--employeeDAO-->
+    <!--jdbcEmployeeDAO-->
     <bean id="employeeDAO" class="com.goit.projects.restaurant.model.jdbc.JdbcEmployeeDAO">
         <property name="jdbcTemplate" ref="jdbcTemplate"/>
     </bean>
@@ -42,6 +43,16 @@
     <!--employeeController-->
     <bean id="employeeController" class="com.goit.projects.restaurant.controllers.EmployeeController">
         <property name="employeeDAO" ref="employeeDAO"/>
+    </bean>
+
+    <!--jdbcFoodCategoryDAO-->
+    <bean id="jdbcFoodCategoryDAO" class="com.goit.projects.restaurant.model.jdbc.JdbcFoodCategoryDAO">
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    </bean>
+
+    <!--categoryController-->
+    <bean id="categoryController" class="com.goit.projects.restaurant.controllers.FoodCategoryController">
+        <property name="jdbcFoodCategoryDAO" ref="jdbcFoodCategoryDAO"/>
     </bean>
 
 
