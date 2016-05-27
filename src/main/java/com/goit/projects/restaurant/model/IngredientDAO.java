@@ -6,7 +6,11 @@ public interface IngredientDAO {
 
     void saveIngredient(Ingredient newIngredient);
 
-    void removeIngredient(Ingredient ingredient);
+    void removeById(int id);
+
+    void removeByName(String name);
+
+    Ingredient loadById(int id);
 
     Ingredient loadByName(String name);
 
