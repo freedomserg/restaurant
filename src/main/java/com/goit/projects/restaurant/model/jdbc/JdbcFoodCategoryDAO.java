@@ -25,17 +25,37 @@ public class JdbcFoodCategoryDAO implements FoodCategoryDAO {
     }
 
     @Override
-    public void removeCategory(FoodCategory category) {
-
+    @Transactional(propagation = Propagation.MANDATORY)
+    public void removeCategoryById(int id) {
+        String query = "DELETE FROM food_categories WHERE category_id = ?";
+        jdbcTemplate.update(query, id);
     }
 
     @Override
+    @Transactional(propagation = Propagation.MANDATORY)
+    public void removeCategoryByName(String name) {
+        String query = "DELETE FROM food_categories WHERE category_name = ?";
+        jdbcTemplate.update(query, name);
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.MANDATORY)
+    public FoodCategory loadById(int id) {
+        String query = "SELECT * FROM food_categories WHERE category_id = ?";
+        return jdbcTemplate.queryForObject(query, new FoodCategoryRowMapper(), id);
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.MANDATORY)
     public FoodCategory loadByName(String name) {
-        return null;
+        String query = "SELECT * FROM food_categories WHERE category_name = ?";
+        return jdbcTemplate.queryForObject(query, new FoodCategoryRowMapper(), name);
     }
 
     @Override
+    @Transactional(propagation = Propagation.MANDATORY)
     public List<FoodCategory> findAll() {
-        return null;
+        String query = "SELECT * FROM food_categories";
+        return jdbcTemplate.query(query, new FoodCategoryRowMapper());
     }
 }

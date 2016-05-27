@@ -19,4 +19,12 @@ public class FoodCategory {
     public void setCategory_name(String category_name) {
         this.category_name = category_name;
     }
+
+    @Override
+    public String toString() {
+        return "FoodCategory{" +
+                "category_id=" + category_id +
+                ", category_name='" + category_name + '\'' +
+                '}';
+    }
 }

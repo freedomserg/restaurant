@@ -33,11 +33,6 @@ public class Bootstrap {
     }
 
     private void execute() {
-        FoodCategory foodCategory = new FoodCategory();
-        foodCategory.setCategory_name("beer");
-
-        foodCategoryController.addCategory(foodCategory);
-
 
     }
 }
