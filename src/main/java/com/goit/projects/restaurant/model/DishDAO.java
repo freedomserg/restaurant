@@ -4,11 +4,15 @@ import java.util.List;
 
 public interface DishDAO {
 
-    void addDish(Dish newDish);
+    void saveDish(Dish newDish);
 
-    void removeDish(Dish dish);
+    void removeDishById(int id);
+
+    void removeDishByName(String name);
 
     Dish loadByName(String dishName);
+
+    Dish loadById(int id);
 
     List<Dish> findAll();
 }

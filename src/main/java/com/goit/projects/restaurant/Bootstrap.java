@@ -1,12 +1,10 @@
 package com.goit.projects.restaurant;
 
+import com.goit.projects.restaurant.controllers.DishController;
 import com.goit.projects.restaurant.controllers.EmployeeController;
 import com.goit.projects.restaurant.controllers.FoodCategoryController;
 import com.goit.projects.restaurant.controllers.IngredientController;
-import com.goit.projects.restaurant.model.Employee;
-import com.goit.projects.restaurant.model.EmployeeDAO;
-import com.goit.projects.restaurant.model.FoodCategory;
-import com.goit.projects.restaurant.model.Ingredient;
+import com.goit.projects.restaurant.model.*;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -19,6 +17,7 @@ public class Bootstrap {
     private EmployeeController employeeController;
     private FoodCategoryController foodCategoryController;
     private IngredientController ingredientController;
+    private DishController dishController;
 
     public void setEmployeeController(EmployeeController employeeController) {
         this.employeeController = employeeController;
@@ -32,6 +31,10 @@ public class Bootstrap {
         this.ingredientController = ingredientController;
     }
 
+    public void setDishController(DishController dishController) {
+        this.dishController = dishController;
+    }
+
     public static void main(String[] args ) {
         ApplicationContext context = new ClassPathXmlApplicationContext("application-context.xml");
         Bootstrap bootstrap = context.getBean("bootstrap", Bootstrap.class);
@@ -40,14 +43,6 @@ public class Bootstrap {
     }
 
     private void execute() {
-        Ingredient item = new Ingredient();
-        item.setIngredient_name("potato");
 
-        ingredientController.addIngredient(item);
-        System.out.println(ingredientController.getByName("potato"));
-        System.out.println(ingredientController.getAll());
-
-        ingredientController.deleteById(21);
-        System.out.println(ingredientController.getAll());
     }
 }

@@ -8,6 +8,7 @@
         <property name="employeeController" ref="employeeController"/>
         <property name="foodCategoryController" ref="categoryController"/>
         <property name="ingredientController" ref="ingredientController"/>
+        <property name="dishController" ref="dishController"/>
     </bean>
 
     <!--data source implementation-->
@@ -46,24 +47,34 @@
         <property name="employeeDAO" ref="employeeDAO"/>
     </bean>
 
-    <!--jdbcFoodCategoryDAO-->
+    <!--foodCategoryDAO-->
     <bean id="jdbcFoodCategoryDAO" class="com.goit.projects.restaurant.model.jdbc.JdbcFoodCategoryDAO">
         <property name="jdbcTemplate" ref="jdbcTemplate"/>
     </bean>
 
     <!--categoryController-->
     <bean id="categoryController" class="com.goit.projects.restaurant.controllers.FoodCategoryController">
-        <property name="jdbcFoodCategoryDAO" ref="jdbcFoodCategoryDAO"/>
+        <property name="foodCategoryDAO" ref="jdbcFoodCategoryDAO"/>
     </bean>
 
-    <!--jdbcIngredientDAO-->
+    <!--ingredientDAO-->
     <bean id="jdbcIngredientDAO" class="com.goit.projects.restaurant.model.jdbc.JdbcIngredientDAO">
         <property name="jdbcTemplate" ref="jdbcTemplate"/>
     </bean>
 
     <!--ingredientController-->
     <bean id="ingredientController" class="com.goit.projects.restaurant.controllers.IngredientController">
-        <property name="jdbcIngredientDAO" ref="jdbcIngredientDAO"/>
+        <property name="ingredientDAO" ref="jdbcIngredientDAO"/>
+    </bean>
+
+    <!--jdbcDishDAO-->
+    <bean id="jdbcDishDAO" class="com.goit.projects.restaurant.model.jdbc.JdbcDishDAO">
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    </bean>
+
+    <!--dishController-->
+    <bean id="dishController" class="com.goit.projects.restaurant.controllers.DishController">
+        <property name="dishDAO" ref="jdbcDishDAO"/>
     </bean>
 
 
