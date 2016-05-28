@@ -1,6 +1,7 @@
 package com.goit.projects.restaurant.controllers;
 
 import com.goit.projects.restaurant.model.Ingredient;
+import com.goit.projects.restaurant.model.IngredientDAO;
 import com.goit.projects.restaurant.model.jdbc.JdbcIngredientDAO;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -8,39 +9,39 @@ import java.util.List;
 
 public class IngredientController {
 
-    private JdbcIngredientDAO jdbcIngredientDAO;
+    private IngredientDAO ingredientDAO;
 
-    public void setJdbcIngredientDAO(JdbcIngredientDAO jdbcIngredientDAO) {
-        this.jdbcIngredientDAO = jdbcIngredientDAO;
+    public void setIngredientDAO(IngredientDAO ingredientDAO) {
+        this.ingredientDAO = ingredientDAO;
     }
 
     @Transactional
     public void addIngredient(Ingredient newIngredient) {
-        jdbcIngredientDAO.saveIngredient(newIngredient);
+        ingredientDAO.saveIngredient(newIngredient);
     }
 
     @Transactional
     public void deleteById(int id) {
-        jdbcIngredientDAO.removeById(id);
+        ingredientDAO.removeById(id);
     }
 
     @Transactional
     public void deleteByName(String name) {
-        jdbcIngredientDAO.removeByName(name);
+        ingredientDAO.removeByName(name);
     }
 
     @Transactional
     public Ingredient getById(int id) {
-        return jdbcIngredientDAO.loadById(id);
+        return ingredientDAO.loadById(id);
     }
 
     @Transactional
     public Ingredient getByName(String name) {
-        return jdbcIngredientDAO.loadByName(name);
+        return ingredientDAO.loadByName(name);
     }
 
     @Transactional
     public List<Ingredient> getAll() {
-        return jdbcIngredientDAO.findAll();
+        return ingredientDAO.findAll();
     }
 }

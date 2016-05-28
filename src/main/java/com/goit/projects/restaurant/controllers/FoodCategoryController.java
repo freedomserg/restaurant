@@ -1,6 +1,7 @@
 package com.goit.projects.restaurant.controllers;
 
 import com.goit.projects.restaurant.model.FoodCategory;
+import com.goit.projects.restaurant.model.FoodCategoryDAO;
 import com.goit.projects.restaurant.model.jdbc.JdbcFoodCategoryDAO;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -8,39 +9,39 @@ import java.util.List;
 
 public class FoodCategoryController {
 
-    private JdbcFoodCategoryDAO jdbcFoodCategoryDAO;
+    private FoodCategoryDAO foodCategoryDAO;
 
-    public void setJdbcFoodCategoryDAO(JdbcFoodCategoryDAO jdbcFoodCategoryDAO) {
-        this.jdbcFoodCategoryDAO = jdbcFoodCategoryDAO;
+    public void setFoodCategoryDAO(FoodCategoryDAO foodCategoryDAO) {
+        this.foodCategoryDAO = foodCategoryDAO;
     }
 
     @Transactional
     public void addCategory(FoodCategory newCategory) {
-        jdbcFoodCategoryDAO.saveCategory(newCategory);
+        foodCategoryDAO.saveCategory(newCategory);
     }
 
     @Transactional
     public void deleteCategoryById(int id) {
-        jdbcFoodCategoryDAO.removeCategoryById(id);
+        foodCategoryDAO.removeCategoryById(id);
     }
 
     @Transactional
     public void deleteCategoryByName(String name) {
-        jdbcFoodCategoryDAO.removeCategoryByName(name);
+        foodCategoryDAO.removeCategoryByName(name);
     }
 
     @Transactional
     public FoodCategory getCategoryById(int id) {
-        return jdbcFoodCategoryDAO.loadById(id);
+        return foodCategoryDAO.loadById(id);
     }
 
     @Transactional
     public FoodCategory getCategoryByName(String name) {
-        return jdbcFoodCategoryDAO.loadByName(name);
+        return foodCategoryDAO.loadByName(name);
     }
 
     @Transactional
     public List<FoodCategory> getAll() {
-        return jdbcFoodCategoryDAO.findAll();
+        return foodCategoryDAO.findAll();
     }
 }
