@@ -1,7 +1,6 @@
 package com.goit.projects.restaurant;
 
 import com.goit.projects.restaurant.controllers.*;
-import com.goit.projects.restaurant.model.Menu;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

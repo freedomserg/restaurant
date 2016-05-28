@@ -1,4 +1,6 @@
-package com.goit.projects.restaurant.model;
+package com.goit.projects.restaurant.model.dao;
+
+import com.goit.projects.restaurant.model.entity.FoodCategory;
 
 import java.util.List;
 

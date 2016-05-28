@@ -1,6 +1,6 @@
 package com.goit.projects.restaurant.model.jdbc;
 
-import com.goit.projects.restaurant.model.Menu;
+import com.goit.projects.restaurant.model.entity.Menu;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;

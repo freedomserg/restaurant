@@ -1,7 +1,7 @@
 package com.goit.projects.restaurant.model.jdbc;
 
-import com.goit.projects.restaurant.model.Dish;
-import com.goit.projects.restaurant.model.DishDAO;
+import com.goit.projects.restaurant.model.entity.Dish;
+import com.goit.projects.restaurant.model.dao.DishDAO;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;

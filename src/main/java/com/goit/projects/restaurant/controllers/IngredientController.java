@@ -1,8 +1,7 @@
 package com.goit.projects.restaurant.controllers;
 
-import com.goit.projects.restaurant.model.Ingredient;
-import com.goit.projects.restaurant.model.IngredientDAO;
-import com.goit.projects.restaurant.model.jdbc.JdbcIngredientDAO;
+import com.goit.projects.restaurant.model.entity.Ingredient;
+import com.goit.projects.restaurant.model.dao.IngredientDAO;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;

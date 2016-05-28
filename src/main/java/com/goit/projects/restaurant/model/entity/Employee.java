@@ -1,4 +1,4 @@
-package com.goit.projects.restaurant.model;
+package com.goit.projects.restaurant.model.entity;
 
 import java.util.Date;
 
