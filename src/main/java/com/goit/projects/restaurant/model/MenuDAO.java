@@ -4,15 +4,21 @@ import java.util.List;
 
 public interface MenuDAO {
 
-    void addMenu(Menu newMenu);
+    void saveMenu(Menu newMenu);
 
-    void removeMenu(Menu menu);
+    void removeById(int id);
 
-    void addDishTo(Menu menu, Dish newDish);
+    void removeByName(String name);
 
-    void removeDishFrom(Menu menu, Dish dish);
+    void addDishTo(String menuName, String dishName);
 
-    Dish loadByName(String menuName);
+    void removeDishFrom(String menuName, String dishName);
+
+    Menu loadByName(String name);
+
+    Menu loadById(int id);
+
+    List<Dish> loadDishesByMenuName(String menuName);
 
     List<Menu> findAll();
 }

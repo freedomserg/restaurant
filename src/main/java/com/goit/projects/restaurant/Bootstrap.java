@@ -1,16 +1,9 @@
 package com.goit.projects.restaurant;
 
-import com.goit.projects.restaurant.controllers.DishController;
-import com.goit.projects.restaurant.controllers.EmployeeController;
-import com.goit.projects.restaurant.controllers.FoodCategoryController;
-import com.goit.projects.restaurant.controllers.IngredientController;
-import com.goit.projects.restaurant.model.*;
+import com.goit.projects.restaurant.controllers.*;
+import com.goit.projects.restaurant.model.Menu;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.List;
 
 public class Bootstrap {
 
@@ -18,6 +11,7 @@ public class Bootstrap {
     private FoodCategoryController foodCategoryController;
     private IngredientController ingredientController;
     private DishController dishController;
+    private MenuController menuController;
 
     public void setEmployeeController(EmployeeController employeeController) {
         this.employeeController = employeeController;
@@ -35,6 +29,10 @@ public class Bootstrap {
         this.dishController = dishController;
     }
 
+    public void setMenuController(MenuController menuController) {
+        this.menuController = menuController;
+    }
+
     public static void main(String[] args ) {
         ApplicationContext context = new ClassPathXmlApplicationContext("application-context.xml");
         Bootstrap bootstrap = context.getBean("bootstrap", Bootstrap.class);
@@ -43,6 +41,5 @@ public class Bootstrap {
     }
 
     private void execute() {
-
     }
 }
