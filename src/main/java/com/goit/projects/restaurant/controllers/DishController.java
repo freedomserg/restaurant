@@ -2,6 +2,7 @@ package com.goit.projects.restaurant.controllers;
 
 import com.goit.projects.restaurant.model.entity.Dish;
 import com.goit.projects.restaurant.model.dao.DishDAO;
+import com.goit.projects.restaurant.model.entity.Ingredient;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -37,6 +38,13 @@ public class DishController {
     @Transactional
     public Dish getByName(String name) {
         return dishDAO.loadByName(name);
+    }
+
+    @Transactional
+    public void getIngredientsByDishName(String dishName) {
+        List<Ingredient> ingredients = dishDAO.loadIngredientsByDishName(dishName);
+        System.out.println(dishName + ":");
+        ingredients.forEach(System.out::println);
     }
 
     @Transactional

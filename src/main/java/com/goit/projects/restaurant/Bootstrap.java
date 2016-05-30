@@ -1,8 +1,11 @@
 package com.goit.projects.restaurant;
 
 import com.goit.projects.restaurant.controllers.*;
+import com.goit.projects.restaurant.model.entity.Ingredient;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import java.util.List;
 
 public class Bootstrap {
 

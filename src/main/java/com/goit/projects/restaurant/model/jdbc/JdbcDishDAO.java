@@ -2,6 +2,7 @@ package com.goit.projects.restaurant.model.jdbc;
 
 import com.goit.projects.restaurant.model.entity.Dish;
 import com.goit.projects.restaurant.model.dao.DishDAO;
+import com.goit.projects.restaurant.model.entity.Ingredient;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -51,6 +52,19 @@ public class JdbcDishDAO implements DishDAO {
     public Dish loadById(int id) {
         String query = "SELECT * FROM dish WHERE dish_id = ?";
         return jdbcTemplate.queryForObject(query, new DishRowMapper(), id);
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.MANDATORY)
+    public List<Ingredient> loadIngredientsByDishName(String dishName) {
+        String query = "SELECT * FROM ingredient " +
+                            "WHERE ingredient.ingredient_id IN (" +
+                                "SELECT ingredient_id FROM dish_ingredients " +
+                                    "INNER JOIN dish " +
+                                        "ON dish_ingredients.dish_id = dish.dish_id " +
+                                            "AND dish.dish_name = ?" +
+                                ")";
+        return jdbcTemplate.query(query, new IngredientRowMapper(), dishName);
     }
 
     @Override
