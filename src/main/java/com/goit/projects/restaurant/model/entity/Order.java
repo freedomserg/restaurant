@@ -7,6 +7,7 @@ public class Order {
     private int waiter_id;
     private int table_number;
     private Date order_date;
+    private String state;
 
     public int getOrder_id() {
         return order_id;
@@ -40,6 +41,14 @@ public class Order {
         this.order_date = order_date;
     }
 
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
     @Override
     public String toString() {
         return "Order{" +
@@ -47,6 +56,7 @@ public class Order {
                 ", waiter_id=" + waiter_id +
                 ", table_number=" + table_number +
                 ", order_date=" + order_date +
+                ", state='" + state + '\'' +
                 '}';
     }
 }

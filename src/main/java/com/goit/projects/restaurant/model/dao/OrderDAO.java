@@ -7,15 +7,17 @@ import java.util.List;
 
 public interface OrderDAO {
 
-    void addOrder(Order newOrder);
+    void saveOrder(Order newOrder);
 
-    void addDishTo(Order order, Dish dish);
+    void addDishTo(int orderId, String dishName);
 
-    void removeDishFrom(Order order, Dish dish);
+    void removeDishFrom(int orderId, String dish);
 
-    void removeOrder(Order order);
+    void removeOrder(int orderId);
 
-    void closeOrder(Order order);
+    void closeOrder(int orderId);
+
+    List<Dish> loadDishesByOrderId(int orderId);
 
     List<Order> findOpened();
 

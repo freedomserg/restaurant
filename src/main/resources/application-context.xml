@@ -10,6 +10,7 @@
         <property name="ingredientController" ref="ingredientController"/>
         <property name="dishController" ref="dishController"/>
         <property name="menuController" ref="menuController"/>
+        <property name="orderController" ref="orderController"/>
     </bean>
 
     <!--data source implementation-->
@@ -86,6 +87,16 @@
     <!--menuController-->
     <bean id="menuController" class="com.goit.projects.restaurant.controllers.MenuController">
         <property name="menuDAO" ref="jdbcMenuDAO"/>
+    </bean>
+
+    <!--jdbcOrderDAO-->
+    <bean id="jdbcOrderDAO" class="com.goit.projects.restaurant.model.jdbc.JdbcOrderDAO">
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    </bean>
+
+    <!--orderController-->
+    <bean id="orderController" class="com.goit.projects.restaurant.controllers.OrderController">
+        <property name="orderDAO" ref="jdbcOrderDAO"/>
     </bean>
 
 </beans>

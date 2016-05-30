@@ -2,9 +2,11 @@ package com.goit.projects.restaurant;
 
 import com.goit.projects.restaurant.controllers.*;
 import com.goit.projects.restaurant.model.entity.Ingredient;
+import com.goit.projects.restaurant.model.entity.Order;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.util.Date;
 import java.util.List;
 
 public class Bootstrap {
@@ -14,6 +16,7 @@ public class Bootstrap {
     private IngredientController ingredientController;
     private DishController dishController;
     private MenuController menuController;
+    private OrderController orderController;
 
     public void setEmployeeController(EmployeeController employeeController) {
         this.employeeController = employeeController;
@@ -33,6 +36,10 @@ public class Bootstrap {
 
     public void setMenuController(MenuController menuController) {
         this.menuController = menuController;
+    }
+
+    public void setOrderController(OrderController orderController) {
+        this.orderController = orderController;
     }
 
     public static void main(String[] args ) {
