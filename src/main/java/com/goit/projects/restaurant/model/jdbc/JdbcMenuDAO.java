@@ -3,6 +3,8 @@ package com.goit.projects.restaurant.model.jdbc;
 import com.goit.projects.restaurant.model.entity.Dish;
 import com.goit.projects.restaurant.model.entity.Menu;
 import com.goit.projects.restaurant.model.dao.MenuDAO;
+import com.goit.projects.restaurant.model.jdbc.rowMappers.DishRowMapper;
+import com.goit.projects.restaurant.model.jdbc.rowMappers.MenuRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;

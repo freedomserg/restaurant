@@ -2,6 +2,7 @@ package com.goit.projects.restaurant.model.jdbc;
 
 import com.goit.projects.restaurant.model.entity.Employee;
 import com.goit.projects.restaurant.model.dao.EmployeeDAO;
+import com.goit.projects.restaurant.model.jdbc.rowMappers.EmployeeRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;

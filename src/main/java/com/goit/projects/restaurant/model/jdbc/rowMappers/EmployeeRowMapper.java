@@ -1,4 +1,4 @@
-package com.goit.projects.restaurant.model.jdbc;
+package com.goit.projects.restaurant.model.jdbc.rowMappers;
 
 import com.goit.projects.restaurant.model.entity.Employee;
 import org.springframework.jdbc.core.RowMapper;
