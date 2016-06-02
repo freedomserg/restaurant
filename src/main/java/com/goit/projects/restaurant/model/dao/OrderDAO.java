@@ -9,9 +9,11 @@ public interface OrderDAO {
 
     void saveOrder(Order newOrder);
 
-    void addDishTo(int orderId, String dishName);
+    void addDishTo(int orderId, String dishName, int dishQuantity);
 
-    void removeDishFrom(int orderId, String dish);
+    void removeDishFrom(int orderId, String dishName);
+
+    void setNewDishQuantity(int orderId, String dishName, int newQuantity);
 
     void removeOrder(int orderId);
 

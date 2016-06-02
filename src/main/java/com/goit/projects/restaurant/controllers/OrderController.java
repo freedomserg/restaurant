@@ -2,7 +2,6 @@ package com.goit.projects.restaurant.controllers;
 
 import com.goit.projects.restaurant.model.dao.OrderDAO;
 import com.goit.projects.restaurant.model.entity.Order;
-import com.goit.projects.restaurant.model.jdbc.JdbcOrderDAO;
 import org.springframework.transaction.annotation.Transactional;
 
 public class OrderController {
@@ -16,5 +15,10 @@ public class OrderController {
     @Transactional
     public void addOrder(Order newOrder) {
         orderDAO.saveOrder(newOrder);
+    }
+
+    @Transactional
+    public void putDishTo(int orderId, String dishName, int dishQuantity) {
+        orderDAO.addDishTo(orderId, dishName, dishQuantity);
     }
 }

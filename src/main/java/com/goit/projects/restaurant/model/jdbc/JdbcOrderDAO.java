@@ -29,13 +29,23 @@ public class JdbcOrderDAO implements OrderDAO {
 
     @Override
     @Transactional(propagation = Propagation.MANDATORY)
-    public void addDishTo(int orderId, String dishName) {
+    public void addDishTo(int orderId, String dishName, int dishQuantity) {
+        String query = "INSERT INTO order_dish (order_id, dish_id, dish_quantity)" +
+                            "VALUES (?, " +
+                                    "(SELECT dish_id FROM dish WHERE dish_name = ?), " +
+                                    "?)";
+        jdbcTemplate.update(query, orderId, dishName, dishQuantity);
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.MANDATORY)
+    public void removeDishFrom(int orderId, String dishName) {
 
     }
 
     @Override
     @Transactional(propagation = Propagation.MANDATORY)
-    public void removeDishFrom(int orderId, String dish) {
+    public void setNewDishQuantity(int orderId, String dishName, int newQuantity) {
 
     }
 
