@@ -21,4 +21,21 @@ public class OrderController {
     public void putDishTo(int orderId, String dishName, int dishQuantity) {
         orderDAO.addDishTo(orderId, dishName, dishQuantity);
     }
+
+    @Transactional
+    public void deleteDishFrom(int orderId, String dishName) {
+        orderDAO.removeDishFrom(orderId, dishName);
+    }
+
+    @Transactional
+    public void updateDishQuantity(int orderId, String dishName, int newQuantity) {
+        orderDAO.setNewDishQuantity(orderId, dishName, newQuantity);
+    }
+
+    @Transactional
+    public void deleteOrder(int orderId) {
+        orderDAO.removeOrder(orderId);
+    }
+
+
 }
