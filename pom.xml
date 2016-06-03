@@ -14,6 +14,10 @@
         <maven.compiler.plugin.source.version>1.8</maven.compiler.plugin.source.version>
         <maven.compiler.plugin.target.version>1.8</maven.compiler.plugin.target.version>
         <spring.version>4.2.5.RELEASE</spring.version>
+        <c3po.version>0.9.5.2</c3po.version>
+        <postgre.version>9.4-1201-jdbc41</postgre.version>
+        <slf4j.version>1.7.21</slf4j.version>
+        <logback.version>1.1.7</logback.version>
 
     </properties>
 
@@ -73,35 +77,35 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
-            <version>4.2.5.RELEASE</version>
+            <version>${spring.version}</version>
         </dependency>
 
         <!--c3po - data source interface implementation-->
         <dependency>
             <groupId>com.mchange</groupId>
             <artifactId>c3p0</artifactId>
-            <version>0.9.5.2</version>
+            <version>${c3po.version}</version>
         </dependency>
 
         <!-- PostgreSql -->
         <dependency>
-            <groupId>postgresql</groupId>
+            <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>9.1-901-1.jdbc4</version>
+            <version>${postgre.version}</version>
         </dependency>
 
         <!--Slf4j API-->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>1.7.21</version>
+            <version>${slf4j.version}</version>
         </dependency>
 
         <!--Logback - logging implementation-->
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>1.1.7</version>
+            <version>${logback.version}</version>
         </dependency>
 
         <!-- Junit -->
