@@ -1,8 +1,11 @@
 package com.goit.projects.restaurant.controllers;
 
 import com.goit.projects.restaurant.model.dao.OrderDAO;
+import com.goit.projects.restaurant.model.entity.Dish;
 import com.goit.projects.restaurant.model.entity.Order;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 public class OrderController {
 
@@ -35,6 +38,28 @@ public class OrderController {
     @Transactional
     public void deleteOrder(int orderId) {
         orderDAO.removeOrder(orderId);
+    }
+
+    @Transactional
+    public void closeOrder(int orderId) {
+        orderDAO.closeOrder(orderId);
+    }
+
+    @Transactional
+    public void getDishesByOrderId(int orderId) {
+        List<Dish> dishes = orderDAO.loadDishesByOrderId(orderId);
+        System.out.println("Order#" + orderId + ":");
+        dishes.forEach(System.out::println);
+    }
+
+    @Transactional
+    public List<Order> getOpened() {
+        return orderDAO.findOpened();
+    }
+
+    @Transactional
+    public List<Order> getClosed() {
+        return orderDAO.findClosed();
     }
 
 
