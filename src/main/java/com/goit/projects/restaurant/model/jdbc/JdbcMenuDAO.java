@@ -84,6 +84,7 @@ public class JdbcMenuDAO implements MenuDAO {
     }
 
     @Override
+    @Transactional(propagation = Propagation.MANDATORY)
     public List<Dish> loadDishesByMenuName(String menuName) {
         String query = "SELECT * FROM dish " +
                             "WHERE dish.dish_id IN (" +
