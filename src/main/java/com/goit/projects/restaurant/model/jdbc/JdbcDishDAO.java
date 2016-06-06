@@ -31,15 +31,23 @@ public class JdbcDishDAO implements DishDAO {
     @Override
     @Transactional(propagation = Propagation.MANDATORY)
     public void removeDishById(int id) {
-        String query = "DELETE FROM dish WHERE dish_id = ?";
-        jdbcTemplate.update(query, id);
+        String removeFromDishIngredientsQuery = "DELETE FROM dish_ingredients " +
+                                                    "WHERE dish_id = ?";
+        jdbcTemplate.update(removeFromDishIngredientsQuery, id);
+        String removeFromDishQuery = "DELETE FROM dish WHERE dish_id = ?";
+        jdbcTemplate.update(removeFromDishQuery, id);
     }
 
     @Override
     @Transactional(propagation = Propagation.MANDATORY)
     public void removeDishByName(String name) {
-        String query = "DELETE FROM dish WHERE dish_name = ?";
-        jdbcTemplate.update(query, name);
+        String removeFromDishIngredientsQuery = "DELETE FROM dish_ingredients " +
+                                                    "WHERE dish_id = " +
+                                                        "(SELECT dish_id FROM dish " +
+                                                            "WHERE dish_name = ?)";
+        jdbcTemplate.update(removeFromDishIngredientsQuery, name);
+        String removeFromDishQuery = "DELETE FROM dish WHERE dish_name = ?";
+        jdbcTemplate.update(removeFromDishQuery, name);
     }
 
     @Override
