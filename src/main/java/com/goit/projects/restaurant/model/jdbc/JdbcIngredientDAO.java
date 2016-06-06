@@ -27,15 +27,21 @@ public class JdbcIngredientDAO implements IngredientDAO {
     @Override
     @Transactional(propagation = Propagation.MANDATORY)
     public void removeById(int id) {
-        String query = "DELETE FROM ingredient WHERE ingredient_id = ?";
-        jdbcTemplate.update(query, id);
+        String removeFromStoreQuery = "DELETE FROM store WHERE ingredient_id = ?";
+        jdbcTemplate.update(removeFromStoreQuery, id);
+        String removeFromIngredientQuery = "DELETE FROM ingredient WHERE ingredient_id = ?";
+        jdbcTemplate.update(removeFromIngredientQuery, id);
     }
 
     @Override
     @Transactional(propagation = Propagation.MANDATORY)
     public void removeByName(String name) {
-        String query = "DELETE FROM ingredient WHERE ingredient_name = ?";
-        jdbcTemplate.update(query, name);
+        String removeFromStoreQuery = "DELETE FROM store WHERE ingredient_id = " +
+                                        "(SELECT ingredient_id FROM ingredient " +
+                                            "WHERE ingredient_name = ?)";
+        jdbcTemplate.update(removeFromStoreQuery, name);
+        String removeFromIngredientQuery = "DELETE FROM ingredient WHERE ingredient_name = ?";
+        jdbcTemplate.update(removeFromIngredientQuery, name);
     }
 
     @Override
