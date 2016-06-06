@@ -13,6 +13,7 @@
         <property name="dishController" ref="dishController"/>
         <property name="menuController" ref="menuController"/>
         <property name="orderController" ref="orderController"/>
+        <property name="cookedDishHistoryController" ref="cookedDishHistoryController"/>
     </bean>
 
     <!--data source implementation-->
@@ -102,6 +103,16 @@
     <!--orderController-->
     <bean id="orderController" class="com.goit.projects.restaurant.controllers.OrderController">
         <property name="orderDAO" ref="jdbcOrderDAO"/>
+    </bean>
+    
+    <!--jdbcCookedDishHistoryDAO-->
+    <bean id="jdbcCookedDishHistoryDAO" class="com.goit.projects.restaurant.model.jdbc.JdbcCookedDishHistoryDAO">
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    </bean>
+    
+    <!--cookedDishHistoryController-->
+    <bean id="cookedDishHistoryController" class="com.goit.projects.restaurant.controllers.CookedDishHistoryController">
+        <property name="cookedDishHistoryDAO" ref="jdbcCookedDishHistoryDAO"/>
     </bean>
 
 </beans>

@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface CookedDishHistoryDAO {
 
-    void addCookedDish(CookedDish newCookedDish);
+    void saveCookedDish(CookedDish newCookedDish);
 
     List<CookedDish> findByDate(Date preparationDate);
 
