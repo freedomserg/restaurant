@@ -29,8 +29,11 @@ public class JdbcMenuDAO implements MenuDAO {
     @Override
     @Transactional(propagation = Propagation.MANDATORY)
     public void removeById(int id) {
-        String query = "DELETE FROM menu WHERE menu_id = ?";
-        jdbcTemplate.update(query, id);
+        String removeFromMenuDishQuery = "DELETE FROM menu_dish " +
+                                            "WHERE menu_id = ?";
+        jdbcTemplate.update(removeFromMenuDishQuery, id);
+        String removeFromMenuQuery = "DELETE FROM menu WHERE menu_id = ?";
+        jdbcTemplate.update(removeFromMenuQuery, id);
     }
 
     @Override
