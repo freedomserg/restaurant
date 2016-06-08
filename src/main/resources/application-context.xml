@@ -14,6 +14,7 @@
         <property name="menuController" ref="menuController"/>
         <property name="orderController" ref="orderController"/>
         <property name="cookedDishHistoryController" ref="cookedDishHistoryController"/>
+        <property name="storeController" ref="storeController"/>
     </bean>
 
     <!--data source implementation-->
@@ -113,6 +114,16 @@
     <!--cookedDishHistoryController-->
     <bean id="cookedDishHistoryController" class="com.goit.projects.restaurant.controllers.CookedDishHistoryController">
         <property name="cookedDishHistoryDAO" ref="jdbcCookedDishHistoryDAO"/>
+    </bean>
+
+    <!--jdbcStoreDAO-->
+    <bean id="jdbcStoreDAO" class="com.goit.projects.restaurant.model.jdbc.JdbcStoreDAO">
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    </bean>
+
+    <!--storeController-->
+    <bean id="storeController" class="com.goit.projects.restaurant.controllers.StoreController">
+        <property name="storeDAO" ref="jdbcStoreDAO"/>
     </bean>
 
 </beans>

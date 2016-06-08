@@ -1,20 +1,21 @@
 package com.goit.projects.restaurant.model.dao;
 
 import com.goit.projects.restaurant.model.entity.Ingredient;
+import com.goit.projects.restaurant.model.entity.Store;
 
 import java.util.List;
 
 public interface StoreDAO {
 
-    void addIngredient(Ingredient newIngredient);
+    void saveIngredient(int ingredientId, int minRequiredQuantity, int quantity);
 
-    void removeIngredient(Ingredient ingredient);
+    void removeIngredient(int ingredientId);
 
-    void updateIngredientQuantity(Ingredient ingredient, int newQuantity);
+    void updateIngredientQuantity(int ingredientId, int newQuantity);
 
-    Ingredient loadByName(String ingredientName);
+    Store loadByIngredientName(String ingredientName);
 
-    List<Ingredient> findAll();
+    List<Store> findAllIngredients();
 
-    List<Ingredient> findIsBeingDecreased();
+    List<Store> findIngredientsAreBeingDecreased();
 }
