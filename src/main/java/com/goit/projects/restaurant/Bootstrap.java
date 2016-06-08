@@ -17,6 +17,7 @@ public class Bootstrap {
     private DishController dishController;
     private MenuController menuController;
     private OrderController orderController;
+    private CookedDishHistoryController cookedDishHistoryController;
 
     public void setEmployeeController(EmployeeController employeeController) {
         this.employeeController = employeeController;
@@ -40,6 +41,10 @@ public class Bootstrap {
 
     public void setOrderController(OrderController orderController) {
         this.orderController = orderController;
+    }
+
+    public void setCookedDishHistoryController(CookedDishHistoryController cookedDishHistoryController) {
+        this.cookedDishHistoryController = cookedDishHistoryController;
     }
 
     public static void main(String[] args ) {
