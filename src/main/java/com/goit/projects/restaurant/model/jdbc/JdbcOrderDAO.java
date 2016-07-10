@@ -26,8 +26,8 @@ public class JdbcOrderDAO implements OrderDAO {
     public void saveOrder(Order newOrder) {
         String query = "INSERT INTO client_order (waiter_id, table_number, order_date," +
                 "order_state) VALUES (?, ?, ?, 'opened')";
-        jdbcTemplate.update(query, newOrder.getWaiter_id(), newOrder.getTable_number(),
-                new Date(newOrder.getOrder_date().getTime()));
+        jdbcTemplate.update(query, newOrder.getWaiterId(), newOrder.getTableNumber(),
+                new Date(newOrder.getOrderDate().getTime()));
     }
 
     @Override

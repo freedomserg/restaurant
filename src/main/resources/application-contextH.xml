@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--Main-->
+    <bean id="main" class="com.goit.projects.restaurant.Main">
+        <property name="hEmployeeController" ref="hEmployeeController"/>
+    </bean>
+
+    <!--HEmployeeController-->
+    <bean id="hEmployeeController" class="com.goit.projects.restaurant.controllers.HEmployeeController">
+        <property name="employeeDAO" ref="hEmployeeDAO"/>
+    </bean>
+
+    <!--HEmployeeDAO-->
+    <bean id="hEmployeeDAO" class="com.goit.projects.restaurant.model.hibernate.HEmployeeDAO">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+</beans>

@@ -1,44 +1,64 @@
 package com.goit.projects.restaurant.model.entity;
 
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
 import java.util.Date;
 
+//@Entity
+//@Table(name = "client_order")
 public class Order {
-    private int order_id;
-    private int waiter_id;
-    private int table_number;
-    private Date order_date;
+
+    //@Id
+    //@GeneratedValue(generator = "increment")
+    //@GenericGenerator(name = "increment", strategy = "increment")
+    //@Column(name = "order_id")
+    private int orderId;
+
+    //@ManyToOne
+    //@JoinColumn(name = "employee_id")
+    //@Column(name = "waiter_id")
+    private int waiterId;
+
+    //@Column(name = "table_number")
+    private int tableNumber;
+
+    //@Column(name = "order_date")
+    private Date orderDate;
+
+    //@Column(name = "order_state")
     private String state;
 
-    public int getOrder_id() {
-        return order_id;
+    public int getOrderId() {
+        return orderId;
     }
 
-    public void setOrder_id(int order_id) {
-        this.order_id = order_id;
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
     }
 
-    public int getWaiter_id() {
-        return waiter_id;
+    public int getWaiterId() {
+        return waiterId;
     }
 
-    public void setWaiter_id(int waiter_id) {
-        this.waiter_id = waiter_id;
+    public void setWaiterId(int waiterId) {
+        this.waiterId = waiterId;
     }
 
-    public int getTable_number() {
-        return table_number;
+    public int getTableNumber() {
+        return tableNumber;
     }
 
-    public void setTable_number(int table_number) {
-        this.table_number = table_number;
+    public void setTableNumber(int tableNumber) {
+        this.tableNumber = tableNumber;
     }
 
-    public Date getOrder_date() {
-        return order_date;
+    public Date getOrderDate() {
+        return orderDate;
     }
 
-    public void setOrder_date(Date order_date) {
-        this.order_date = order_date;
+    public void setOrderDate(Date orderDate) {
+        this.orderDate = orderDate;
     }
 
     public String getState() {
@@ -52,10 +72,10 @@ public class Order {
     @Override
     public String toString() {
         return "Order{" +
-                "order_id=" + order_id +
-                ", waiter_id=" + waiter_id +
-                ", table_number=" + table_number +
-                ", order_date=" + order_date +
+                "orderId=" + orderId +
+                ", waiterId=" + waiterId +
+                ", tableNumber=" + tableNumber +
+                ", orderDate=" + orderDate +
                 ", state='" + state + '\'' +
                 '}';
     }

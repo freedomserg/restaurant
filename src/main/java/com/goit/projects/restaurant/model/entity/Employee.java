@@ -1,14 +1,35 @@
 package com.goit.projects.restaurant.model.entity;
 
-import java.util.Date;
+import org.hibernate.annotations.GenericGenerator;
 
+import java.util.Date;
+import javax.persistence.*;
+
+@Entity
+@Table(name = "employee")
 public class Employee {
+    @Id
+    @GeneratedValue(generator = "increment")
+    @GenericGenerator(name = "increment", strategy = "increment")
+    @Column(name = "employee_id")
     private int employee_id;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "surname")
     private String surname;
+
+    @Column(name = "birthday")
     private Date birthday;
+
+    @Column(name = "cell")
     private String cell;
+
+    @Column(name = "position")
     private String position;
+
+    @Column(name = "salary")
     private double salary;
 
     public int getEmployee_id() {

@@ -80,6 +80,20 @@
             <version>${spring.version}</version>
         </dependency>
 
+        <!--Spring-ORM-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <!--Hibernate-Core-->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>5.2.0.Final</version>
+        </dependency>
+
         <!--c3po - data source interface implementation-->
         <dependency>
             <groupId>com.mchange</groupId>
