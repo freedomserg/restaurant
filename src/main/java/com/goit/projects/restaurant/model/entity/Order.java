@@ -4,30 +4,39 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
-//@Entity
-//@Table(name = "client_order")
+@Entity
+@Table(name = "client_order")
 public class Order {
 
-    //@Id
-    //@GeneratedValue(generator = "increment")
-    //@GenericGenerator(name = "increment", strategy = "increment")
-    //@Column(name = "order_id")
+    @Id
+    @GeneratedValue(generator = "increment")
+    @GenericGenerator(name = "increment", strategy = "increment")
+    @Column(name = "order_id")
     private int orderId;
 
-    //@ManyToOne
-    //@JoinColumn(name = "employee_id")
-    //@Column(name = "waiter_id")
-    private int waiterId;
+    @ManyToOne
+    @JoinColumn(name = "waiter_id")
+    private Employee waiter;
 
-    //@Column(name = "table_number")
+    @Column(name = "table_number")
     private int tableNumber;
 
-    //@Column(name = "order_date")
+    @ManyToMany
+    @JoinTable(
+            name = "order_dish",
+            joinColumns = @JoinColumn(name = "order_id"),
+            inverseJoinColumns = @JoinColumn(name = "dish_id")
+    )
+    private List<Dish> dishes;
+
+    @Column(name = "order_date")
     private Date orderDate;
 
-    //@Column(name = "order_state")
-    private String state;
+    @Column(name = "order_state")
+    @Enumerated(EnumType.STRING)
+    private OrderState state;
 
     public int getOrderId() {
         return orderId;
@@ -37,12 +46,12 @@ public class Order {
         this.orderId = orderId;
     }
 
-    public int getWaiterId() {
-        return waiterId;
+    public Employee getWaiter() {
+        return waiter;
     }
 
-    public void setWaiterId(int waiterId) {
-        this.waiterId = waiterId;
+    public void setWaiter(Employee waiter) {
+        this.waiter = waiter;
     }
 
     public int getTableNumber() {
@@ -61,19 +70,27 @@ public class Order {
         this.orderDate = orderDate;
     }
 
-    public String getState() {
+    public OrderState getState() {
         return state;
     }
 
-    public void setState(String state) {
+    public void setState(OrderState state) {
         this.state = state;
+    }
+
+    public List<Dish> getDishes() {
+        return dishes;
+    }
+
+    public void setDishes(List<Dish> dishes) {
+        this.dishes = dishes;
     }
 
     @Override
     public String toString() {
         return "Order{" +
                 "orderId=" + orderId +
-                ", waiterId=" + waiterId +
+                ", waiter=" + waiter +
                 ", tableNumber=" + tableNumber +
                 ", orderDate=" + orderDate +
                 ", state='" + state + '\'' +

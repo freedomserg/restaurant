@@ -1,6 +1,7 @@
 package com.goit.projects.restaurant;
 
 import com.goit.projects.restaurant.controllers.HEmployeeController;
+import com.goit.projects.restaurant.controllers.HOrderController;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -9,9 +10,14 @@ import java.util.List;
 public class Main {
 
     private HEmployeeController hEmployeeController;
+    private HOrderController hOrderController;
 
     public void sethEmployeeController(HEmployeeController hEmployeeController) {
         this.hEmployeeController = hEmployeeController;
+    }
+
+    public void sethOrderController(HOrderController hOrderController) {
+        this.hOrderController = hOrderController;
     }
 
     public static void main(String[] args) {
@@ -22,6 +28,11 @@ public class Main {
     }
 
     private void start() {
-        hEmployeeController.getBySurname("Richman").forEach(System.out::println);
+        //hEmployeeController.getBySurname("Richman").forEach(System.out::println);
+        //hOrderController.createOrder();
+        System.out.println("OPENED: ");
+        hOrderController.getOpened().forEach(System.out::println);
+        System.out.println("CLOSED: ");
+        hOrderController.getClosed().forEach(System.out::println);
     }
 }

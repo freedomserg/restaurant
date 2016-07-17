@@ -44,4 +44,9 @@ public class HEmployeeController {
     public List<Employee> getBySurname(String surname) {
         return employeeDAO.loadBySurname(surname);
     }
+
+    @Transactional
+    public Employee getById(int id) {
+        return employeeDAO.loadById(id);
+    }
 }

@@ -1,10 +1,31 @@
 package com.goit.projects.restaurant.model.entity;
 
+
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "dish")
 public class Dish {
+
+    @Id
+    @GeneratedValue(generator = "increment")
+    @GenericGenerator(name = "increment", strategy = "increment")
+    @Column(name = "dish_id")
     private int dish_id;
+
+    @Column(name = "dish_name")
     private String dish_name;
-    private int category_id;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private FoodCategory category;
+
+    @Column(name = "price")
     private double price;
+
+    @Column(name = "weight")
     private int weight;
 
     public int getDish_id() {
@@ -23,12 +44,12 @@ public class Dish {
         this.dish_name = dish_name;
     }
 
-    public int getCategory_id() {
-        return category_id;
+    public FoodCategory getCategory() {
+        return category;
     }
 
-    public void setCategory_id(int category_id) {
-        this.category_id = category_id;
+    public void setCategory(FoodCategory category) {
+        this.category = category;
     }
 
     public double getPrice() {
@@ -52,7 +73,7 @@ public class Dish {
         return "Dish{" +
                 "dish_id=" + dish_id +
                 ", dish_name='" + dish_name + '\'' +
-                ", category_id=" + category_id +
+                ", category=" + category +
                 ", price=" + price +
                 ", weight=" + weight +
                 '}';

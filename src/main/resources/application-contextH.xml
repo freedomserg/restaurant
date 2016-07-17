@@ -6,6 +6,7 @@
     <!--Main-->
     <bean id="main" class="com.goit.projects.restaurant.Main">
         <property name="hEmployeeController" ref="hEmployeeController"/>
+        <property name="hOrderController" ref="hOrderController"/>
     </bean>
 
     <!--HEmployeeController-->
@@ -13,8 +14,40 @@
         <property name="employeeDAO" ref="hEmployeeDAO"/>
     </bean>
 
+    <!--HOrderController-->
+    <bean id="hOrderController" class="com.goit.projects.restaurant.controllers.HOrderController">
+        <property name="orderDAO" ref="hOrderDAO"/>
+        <property name="employeeController" ref="hEmployeeController"/>
+    </bean>
+
+    <!--HDishController-->
+    <bean class="com.goit.projects.restaurant.controllers.HDishController">
+        <property name="dishDAO" ref="hDishDAO"/>
+        <property name="foodCategoryController" ref="hFoodCategoryController"/>
+    </bean>
+
+    <!--HFoodCategoryController-->
+    <bean id="hFoodCategoryController" class="com.goit.projects.restaurant.controllers.HFoodCategoryController">
+        <property name="foodCategoryDAO" ref="hFoodCategoryDAO"/>
+    </bean>
+
     <!--HEmployeeDAO-->
     <bean id="hEmployeeDAO" class="com.goit.projects.restaurant.model.hibernate.HEmployeeDAO">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <!--HOrderDAO-->
+    <bean id="hOrderDAO" class="com.goit.projects.restaurant.model.hibernate.HOrderDAO">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <!--HDishDAO-->
+    <bean id="hDishDAO" class="com.goit.projects.restaurant.model.hibernate.HDishDAO">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <!--HFoodCategoryDAO-->
+    <bean id="hFoodCategoryDAO" class="com.goit.projects.restaurant.model.hibernate.HFoodCategoryDAO">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 

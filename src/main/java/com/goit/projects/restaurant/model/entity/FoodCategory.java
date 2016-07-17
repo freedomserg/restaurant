@@ -1,7 +1,20 @@
 package com.goit.projects.restaurant.model.entity;
 
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "food_categories")
 public class FoodCategory {
+
+    @Id
+    @GeneratedValue(generator = "increment")
+    @GenericGenerator(name = "increment", strategy = "increment")
+    @Column(name = "category_id")
     private int category_id;
+
+    @Column(name = "category_name")
     private String category_name;
 
     public int getCategory_id() {
