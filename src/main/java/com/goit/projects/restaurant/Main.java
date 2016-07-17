@@ -28,11 +28,7 @@ public class Main {
     }
 
     private void start() {
-        //hEmployeeController.getBySurname("Richman").forEach(System.out::println);
-        //hOrderController.createOrder();
-        System.out.println("OPENED: ");
-        hOrderController.getOpened().forEach(System.out::println);
-        System.out.println("CLOSED: ");
-        hOrderController.getClosed().forEach(System.out::println);
+        hOrderController.printOrders();
+
     }
 }

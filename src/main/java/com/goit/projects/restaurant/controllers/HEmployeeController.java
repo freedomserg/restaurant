@@ -4,9 +4,7 @@ import com.goit.projects.restaurant.model.dao.EmployeeDAO;
 import com.goit.projects.restaurant.model.entity.Employee;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.List;
+import java.util.*;
 
 public class HEmployeeController {
 
@@ -27,7 +25,10 @@ public class HEmployeeController {
         employee.setPosition("waiter");
         employee.setSalary(11000);
 
-        employeeDAO.saveEmployee(employee);
+        Set<Employee> employees = new HashSet<>(employeeDAO.findAll());
+        if (!employees.contains(employee)) {
+            employeeDAO.saveEmployee(employee);
+        }
     }
 
     @Transactional

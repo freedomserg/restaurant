@@ -24,4 +24,6 @@ public interface OrderDAO {
     List<Order> findOpened();
 
     List<Order> findClosed();
+
+    List<Order> findAll();
 }

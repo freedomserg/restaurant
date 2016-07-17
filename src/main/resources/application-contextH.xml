@@ -18,10 +18,11 @@
     <bean id="hOrderController" class="com.goit.projects.restaurant.controllers.HOrderController">
         <property name="orderDAO" ref="hOrderDAO"/>
         <property name="employeeController" ref="hEmployeeController"/>
+        <property name="dishController" ref="dishController"/>
     </bean>
 
     <!--HDishController-->
-    <bean class="com.goit.projects.restaurant.controllers.HDishController">
+    <bean id="dishController" class="com.goit.projects.restaurant.controllers.HDishController">
         <property name="dishDAO" ref="hDishDAO"/>
         <property name="foodCategoryController" ref="hFoodCategoryController"/>
     </bean>

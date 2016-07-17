@@ -82,4 +82,10 @@ public class HOrderDAO implements OrderDAO {
         query.setParameter("state", OrderState.CLOSED);
         return query.getResultList();
     }
+
+    @Override
+    @Transactional(propagation = Propagation.MANDATORY)
+    public List<Order> findAll() {
+        return sessionFactory.getCurrentSession().createQuery("SELECT o FROM Order o").list();
+    }
 }

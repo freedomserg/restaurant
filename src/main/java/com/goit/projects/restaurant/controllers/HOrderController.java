@@ -1,17 +1,18 @@
 package com.goit.projects.restaurant.controllers;
 
 import com.goit.projects.restaurant.model.dao.OrderDAO;
+import com.goit.projects.restaurant.model.entity.Dish;
 import com.goit.projects.restaurant.model.entity.Order;
 import com.goit.projects.restaurant.model.entity.OrderState;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 public class HOrderController {
 
     private OrderDAO orderDAO;
     private HEmployeeController employeeController;
+    private HDishController dishController;
 
     public void setOrderDAO(OrderDAO orderDAO) {
         this.orderDAO = orderDAO;
@@ -21,6 +22,10 @@ public class HOrderController {
         this.employeeController = employeeController;
     }
 
+    public void setDishController(HDishController dishController) {
+        this.dishController = dishController;
+    }
+
     @Transactional
     public void createOrder() {
         Order order = new Order();
@@ -28,6 +33,15 @@ public class HOrderController {
         order.setTableNumber(1);
         order.setOrderDate(new Date());
         order.setState(OrderState.OPENED);
+
+        List<Dish> dishes = Arrays.asList(
+                dishController.getByName("Margarita"),
+                dishController.getByName("Caesar"),
+                dishController.getByName("Caesar"),
+                dishController.getByName("Pork steak"),
+                dishController.getByName("Pork steak")
+        );
+        order.setDishes(dishes);
 
         orderDAO.saveOrder(order);
     }
@@ -40,5 +54,14 @@ public class HOrderController {
     @Transactional
     public List<Order> getClosed() {
         return orderDAO.findClosed();
+    }
+
+    @Transactional
+    public void printOrders() {
+        createOrder();
+        System.out.println("OPENED: ");
+        getOpened().forEach(System.out::println);
+        System.out.println("CLOSED: ");
+        getClosed().forEach(System.out::println);
     }
 }

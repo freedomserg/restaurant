@@ -89,6 +89,34 @@ public class Employee {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        if (Double.compare(employee.salary, salary) != 0) return false;
+        if (!name.equals(employee.name)) return false;
+        if (!surname.equals(employee.surname)) return false;
+        if (birthday != null ? !birthday.equals(employee.birthday) : employee.birthday != null) return false;
+        if (cell != null ? !cell.equals(employee.cell) : employee.cell != null) return false;
+        return position != null ? position.equals(employee.position) : employee.position == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        result = name.hashCode();
+        result = 31 * result + surname.hashCode();
+        result = 31 * result + (birthday != null ? birthday.hashCode() : 0);
+        result = 31 * result + (cell != null ? cell.hashCode() : 0);
+        result = 31 * result + (position != null ? position.hashCode() : 0);
+        temp = Double.doubleToLongBits(salary);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        return result;
+    }
+
+    @Override
     public String toString() {
         return "Employee{" +
                 "employee_id=" + employee_id +

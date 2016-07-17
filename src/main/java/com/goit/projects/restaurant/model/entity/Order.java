@@ -87,13 +87,37 @@ public class Order {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Order order = (Order) o;
+        if (tableNumber != order.tableNumber) return false;
+        if (!waiter.equals(order.waiter)) return false;
+        if (!dishes.equals(order.dishes)) return false;
+        if (!orderDate.equals(order.orderDate)) return false;
+        return state == order.state;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = waiter.hashCode();
+        result = 31 * result + tableNumber;
+        result = 31 * result + dishes.hashCode();
+        result = 31 * result + orderDate.hashCode();
+        result = 31 * result + state.hashCode();
+        return result;
+    }
+
+    @Override
     public String toString() {
         return "Order{" +
                 "orderId=" + orderId +
                 ", waiter=" + waiter +
                 ", tableNumber=" + tableNumber +
+                ", dishes=" + dishes +
                 ", orderDate=" + orderDate +
-                ", state='" + state + '\'' +
+                ", state=" + state +
                 '}';
     }
 }

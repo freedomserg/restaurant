@@ -34,4 +34,9 @@ public class HDishController {
             dishDAO.saveDish(dish);
         }
     }
+
+    @Transactional
+    public Dish getByName(String name) {
+        return dishDAO.loadByName(name);
+    }
 }
