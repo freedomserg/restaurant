@@ -28,7 +28,8 @@ public class Main {
     }
 
     private void start() {
-        hOrderController.printOrders();
+        //hEmployeeController.printEmployees();
+        hEmployeeController.getAll().forEach(System.out::println);
 
     }
 }

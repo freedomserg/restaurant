@@ -3,6 +3,7 @@ package com.goit.projects.restaurant.model.entity;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -23,7 +24,7 @@ public class Order {
     @Column(name = "table_number")
     private int tableNumber;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "order_dish",
             joinColumns = @JoinColumn(name = "order_id"),
@@ -113,10 +114,9 @@ public class Order {
     public String toString() {
         return "Order{" +
                 "orderId=" + orderId +
-                ", waiter=" + waiter +
                 ", tableNumber=" + tableNumber +
                 ", dishes=" + dishes +
-                ", orderDate=" + orderDate +
+                ", orderDate=" + new SimpleDateFormat("dd/MM/yyyy").format(orderDate) +
                 ", state=" + state +
                 '}';
     }

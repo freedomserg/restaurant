@@ -2,6 +2,9 @@ package com.goit.projects.restaurant.controllers;
 
 import com.goit.projects.restaurant.model.dao.EmployeeDAO;
 import com.goit.projects.restaurant.model.entity.Employee;
+import com.goit.projects.restaurant.model.entity.Waiter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
@@ -9,6 +12,7 @@ import java.util.*;
 public class HEmployeeController {
 
     private EmployeeDAO employeeDAO;
+    public Logger logger = LoggerFactory.getLogger(HEmployeeController.class);
 
     public void setEmployeeDAO(EmployeeDAO employeeDAO) {
         this.employeeDAO = employeeDAO;
@@ -16,18 +20,17 @@ public class HEmployeeController {
 
     @Transactional
     public void createEmployee() {
-        Employee employee = new Employee();
-        employee.setEmployee_id(10);
-        employee.setName("Jacob");
-        employee.setSurname("Jason");
-        employee.setBirthday(new Date((new GregorianCalendar(1980, 5, 11)).getTimeInMillis()));
-        employee.setCell("3-3-44");
-        employee.setPosition("waiter");
-        employee.setSalary(11000);
+        Waiter waiter = new Waiter();
+        waiter.setName("Jacob");
+        waiter.setSurname("Jason");
+        waiter.setBirthday(new Date((new GregorianCalendar(1980, 5, 11)).getTimeInMillis()));
+        waiter.setCell("3-3-44");
+        waiter.setPosition("waiter");
+        waiter.setSalary(12000);
 
         Set<Employee> employees = new HashSet<>(employeeDAO.findAll());
-        if (!employees.contains(employee)) {
-            employeeDAO.saveEmployee(employee);
+        if (!employees.contains(waiter)) {
+            employeeDAO.saveEmployee(waiter);
         }
     }
 
@@ -49,5 +52,11 @@ public class HEmployeeController {
     @Transactional
     public Employee getById(int id) {
         return employeeDAO.loadById(id);
+    }
+
+    @Transactional
+    public void printEmployees() {
+        logger.info("Employess: ");
+        getAll().forEach(System.out::println);
     }
 }

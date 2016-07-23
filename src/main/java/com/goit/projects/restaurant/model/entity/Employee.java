@@ -2,11 +2,13 @@ package com.goit.projects.restaurant.model.entity;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.persistence.*;
 
 @Entity
 @Table(name = "employee")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Employee {
     @Id
     @GeneratedValue(generator = "increment")
@@ -122,10 +124,10 @@ public class Employee {
                 "employee_id=" + employee_id +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
-                ", birthday=" + birthday +
+                ", birthday=" + new SimpleDateFormat("dd/MM/yyyy").format(birthday) +
                 ", cell='" + cell + '\'' +
                 ", position='" + position + '\'' +
                 ", salary=" + salary +
-                '}';
+                '}' + "\n";
     }
 }
