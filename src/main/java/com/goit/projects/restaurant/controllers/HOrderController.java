@@ -4,6 +4,8 @@ import com.goit.projects.restaurant.model.dao.OrderDAO;
 import com.goit.projects.restaurant.model.entity.Dish;
 import com.goit.projects.restaurant.model.entity.Order;
 import com.goit.projects.restaurant.model.entity.OrderState;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
@@ -13,6 +15,7 @@ public class HOrderController {
     private OrderDAO orderDAO;
     private HEmployeeController employeeController;
     private HDishController dishController;
+    public Logger logger = LoggerFactory.getLogger(HOrderController.class);
 
     public void setOrderDAO(OrderDAO orderDAO) {
         this.orderDAO = orderDAO;
@@ -59,9 +62,9 @@ public class HOrderController {
     @Transactional
     public void printOrders() {
         createOrder();
-        System.out.println("OPENED: ");
+        logger.info("OPENED: ");
         getOpened().forEach(System.out::println);
-        System.out.println("CLOSED: ");
+        logger.info("CLOSED: ");
         getClosed().forEach(System.out::println);
     }
 }
