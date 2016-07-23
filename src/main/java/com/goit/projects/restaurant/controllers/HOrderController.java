@@ -61,7 +61,6 @@ public class HOrderController {
 
     @Transactional
     public void printOrders() {
-        createOrder();
         logger.info("OPENED: ");
         getOpened().forEach(System.out::println);
         logger.info("CLOSED: ");
